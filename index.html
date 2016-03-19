@@ -1,0 +1,175 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Jogo da Velha</title>
+<style>
+td {
+    border: 1px solid #ccc;
+    font-size: 4em;
+    padding: 15px;
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+    width: 100px;
+    height: 100px;
+}
+table {
+    border-collapse: collapse;
+    margin:auto;
+}
+</style>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+		$('table tr td').click(function() {
+			if($(this).html() == ''){
+				$(this).html(atual);
+				if(atual == 'x'){
+					atual = 'o';
+					mostrar = 'x';
+				}else{
+					atual = 'x';
+					mostrar = '0';
+				}
+				var acabou = true;
+				var itens = ['','','','','','','','',''];
+				$('#atual').html(atual);				
+				$('table tr td').each(function( index ) {					
+					itens[index]= $(this).html();
+				});
+				
+				if(itens[0] == itens[1] && itens[0] == itens[2] && itens[0] != ''){
+					
+					$('table tr td').each(function( index ) {					
+						if(index == 0 || index == 1 || index == 2){
+							$(this).addClass('red');
+						}
+					});
+					alert('Acabouuu: ' +mostrar+' é o Vencedor');
+					location.reload();
+					
+				}	
+				if(itens[0] == itens[3] && itens[0] == itens[6] && itens[0] != ''){
+					$('table tr td').each(function( index ) {					
+						if(index == 0 || index == 3 || index == 6){
+							$(this).addClass('red');
+						}
+					});
+					alert('Acabouuu: ' +mostrar+' é o Vencedor');
+					location.reload();
+				}	
+				if(itens[0] == itens[4] && itens[0] == itens[8] && itens[0] != ''){
+					$('table tr td').each(function( index ) {					
+						if(index == 0 || index == 4 || index == 8){
+							$(this).addClass('red');
+						}
+					});
+					alert('Acabouuu: ' +mostrar+' é o Vencedor');
+					location.reload();
+				}	
+
+				if(itens[1] == itens[4] && itens[1] == itens[7] && itens[1] != ''){
+					$('table tr td').each(function( index ) {					
+						if(index == 1 || index == 4 || index == 7){
+							$(this).addClass('red');
+						}
+					});
+					alert('Acabouuu: ' +mostrar+' é o Vencedor');
+					location.reload();
+				}	
+
+				if(itens[2] == itens[5] && itens[2] == itens[8] && itens[2] != ''){
+					$('table tr td').each(function( index ) {					
+						if(index == 2 || index == 5 || index == 8){
+							$(this).addClass('red');
+						}
+					});
+					alert('Acabouuu: ' +mostrar+' é o Vencedor');
+					location.reload();
+				}
+				if(itens[2] == itens[4] && itens[2] == itens[6] && itens[2] != ''){
+					$('table tr td').each(function( index ) {					
+						if(index == 2 || index == 4 || index == 6){
+							$(this).addClass('red');
+						}
+					});
+					alert('Acabouuu: ' +mostrar+' é o Vencedor');
+					location.reload();
+				}
+
+				if(itens[3] == itens[4] && itens[3] == itens[5] && itens[3] != ''){
+					$('table tr td').each(function( index ) {					
+						if(index == 3 || index == 4 || index == 5){
+							$(this).addClass('red');
+						}
+					});
+					alert('Acabouuu: ' +mostrar+' é o Vencedor');
+					location.reload();
+				}
+
+				if(itens[6] == itens[7] && itens[6] == itens[8] && itens[6] != ''){
+					$('table tr td').each(function( index ) {					
+						if(index == 6 || index == 7 || index == 8){
+							$(this).addClass('red');
+						}
+					});
+					alert('Acabouuu: ' +mostrar+' é o Vencedor');
+					location.reload();
+				}
+				
+				
+
+
+
+
+			}else{
+				$(this).unbind('click');
+			}
+			
+		});
+		var atual = 'x';
+		$('#atual').html(atual);
+});
+</script>
+<style>
+	table tr td{
+		cursor: pointer;
+	}
+	.red{
+		background-color: red;
+	}
+</style>
+</head>
+<body>
+<h1>
+	Jogador atual = <p id="atual" class="btn btn-danger disabled" style="text-transform: uppercase;"></p>
+</h1>
+<table cellspacing="0" cellpadding="0" id="t1">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+</body>
+</html>
